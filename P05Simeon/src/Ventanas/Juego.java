@@ -46,7 +46,9 @@ public class Juego extends JFrame {
 	private JButton btnRestart;	
 	//STRING DE LA RESOLUCION
 	private String res;
-	private Juego joc;
+	//BOOLEANS COMPROBACIONES
+	private boolean num, a1m, a2m, a3m, r1m, r2m;
+
 	public Juego() {
 		setTitle("Juego");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,10 +59,10 @@ public class Juego extends JFrame {
 		contentPane.setLayout(null);
 		
 		//LABEL DE BIENVENIDA
-		lblBienvenida = new JLabel("");
+		lblBienvenida = new JLabel("Bienvenido");
 		lblBienvenida.setBounds(664, 11, 312, 14);
 		contentPane.add(lblBienvenida);
-		
+				
 		//ARRAYS DE LOS DADOS
 		for (int i=0;i<dados3.length;i++){
 			dados3[i]=new ImageIcon(getClass().getResource("/Ventanas/Azul/"+String.valueOf(i+1)+"a.jpg"));
@@ -84,6 +86,13 @@ public class Juego extends JFrame {
 		rndr1 =new Random().nextInt(dados6.length);
 		rndr2 =new Random().nextInt(dados6.length);
 		rndm1 = new Random().nextInt(dados12.length);
+		
+		num = false;
+		a1m = false;
+		a2m = false;
+		a3m = false;
+		r1m = false;
+		r2m = false;
 		//ETIQUETAS DE LOS DADOS 
 		a1 = new JLabel("New label");
 		a1.setIcon(dados3[rnda1]);
@@ -93,12 +102,14 @@ public class Juego extends JFrame {
 				new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent arg0){
+						if (num == false|| a1m == false){
 					a1.setIcon(gris);
 					txtOp.setText(txtOp.getText()+String.valueOf((rnda1+1)));
-					a1.removeMouseListener(this);
+					num = true;
+					a1m = true;
 					}
-			
 				}
+			}
 			);
 		
 		a2 = new JLabel("New label");
@@ -109,11 +120,14 @@ public class Juego extends JFrame {
 				new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent arg0){
+						if (num == false|| a2m == false){
 						a2.setIcon(gris);
 						txtOp.setText(txtOp.getText()+String.valueOf((rnda2+1)));
-						a2.removeMouseListener(this);
-					}
-				}	
+						num = true;
+						a2m = true;
+						}
+					}	
+				}
 			);
 		
 		a3 = new JLabel("New label");
@@ -124,10 +138,13 @@ public class Juego extends JFrame {
 				new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent arg0){
+						if (num == false|| a3m == false){
 						a3.setIcon(gris);
 						txtOp.setText(txtOp.getText()+String.valueOf((rnda3+1)));
-						a3.removeMouseListener(this);
+						num = true;
+						a3m = true;
 					}
+				}
 				}			
 			);
 		
@@ -139,9 +156,12 @@ public class Juego extends JFrame {
 				new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent arg0){
+						if (num == false|| r1m == false){
 						r1.setIcon(gris);
 						txtOp.setText(txtOp.getText()+String.valueOf((rndr1+1)));
-						r1.removeMouseListener(this);
+						num = true;
+						r1m = true;
+					}
 					}
 				}			
 			);
@@ -154,9 +174,12 @@ public class Juego extends JFrame {
 				new MouseAdapter(){
 					@Override
 					public void mouseClicked(MouseEvent arg0){
+						if (num == false || r2m == false){
 						r2.setIcon(gris);
 						txtOp.setText(txtOp.getText()+String.valueOf((rndr2+1)));
-						r2.removeMouseListener(this);
+						num = true;
+						r2m = true;
+					}
 					}
 				}			
 			);
@@ -169,7 +192,10 @@ public class Juego extends JFrame {
 		JButton btnMas = new JButton("+");
 		btnMas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (num == true){
 				txtOp.setText(txtOp.getText()+"+");
+				num = false;
+				}
 			}
 		});
 		btnMas.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -179,7 +205,10 @@ public class Juego extends JFrame {
 		JButton btnMenos = new JButton("-");
 		btnMenos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (num == true){
 				txtOp.setText(txtOp.getText()+"-");
+				num = false;
+				}
 			}
 		});
 		btnMenos.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -192,7 +221,8 @@ public class Juego extends JFrame {
 		contentPane.add(txtOp);
 		txtOp.setColumns(10);	
 		
-	
+		System.out.println(rndm1+1);
+		//BOTON DE MATHDICE
 		JButton btnMath = new JButton("MATHDICE");
 		btnMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -206,8 +236,10 @@ public class Juego extends JFrame {
 				res = Cal.eval(txtOp.getText()).toString();
 				if (Integer.valueOf(res) == rndm1+1){
 					lblRes.setText("Correcto");
+					btnRestart.setEnabled(true);
 				}else{
 					lblRes.setText("Incorrecto, tu resultado es: " + res + ". Inténtalo de nuevo");
+					btnRestart.setEnabled(true);
 				}
 				}
 				catch (Exception error)
@@ -229,15 +261,39 @@ public class Juego extends JFrame {
 		
 	
 		//BOTON DE REINICIAR
-		//REFERENCIA A JOC
-		joc=this;
 		btnRestart = new JButton("REINICIAR");
+		btnRestart.setEnabled(false);
 		btnRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			joc.dispose();
-			Juego joc = new Juego();
-			joc.setVisible(true);
-				}
+				//RANDOMS
+				rnda1 =new Random().nextInt(dados3.length);
+				rnda2 =new Random().nextInt(dados3.length);
+				rnda3 =new Random().nextInt(dados3.length);
+				rndr1 =new Random().nextInt(dados6.length);
+				rndr2 =new Random().nextInt(dados6.length);
+				rndm1 = new Random().nextInt(dados12.length);
+				
+				//ICONOS
+				a1.setIcon(dados3[rnda1]);
+				a2.setIcon(dados3[rnda2]);
+				a3.setIcon(dados3[rnda3]);
+				r1.setIcon(dados6[rndr1]);
+				r2.setIcon(dados6[rndr2]);
+				m1.setIcon(dados12[rndm1]);
+				
+				//REINICIAMOS EL CONTADOR DE CLICK
+				num = false;
+				a1m = false;
+				a2m = false;
+				a3m = false;
+				r1m = false;
+				r2m = false;
+				
+				//REINICIAMOS LOS TEXTOS
+				txtOp.setText("");
+				lblRes.setText("");			
+			}
+				
 		});
 		btnRestart.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnRestart.setBounds(587, 376, 347, 37);
