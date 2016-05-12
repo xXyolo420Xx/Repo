@@ -25,7 +25,7 @@ public class Login extends JFrame {
 	private JTextField txtRes;
 	//PASAMOS REFERENCIAS DE AMBAS VENTANAS
 	private Login v1;
-	private Juego jueg;
+
 	
 	//DEFINICION DE LA VENTANA
 	public Login(Juego jueg) {

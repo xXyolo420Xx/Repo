@@ -90,6 +90,8 @@ public class Login extends JFrame {
 				//CREAMOS 3 STRINGS PARA COMPROBAR SI SU LENGTH ES 0
 				//HACEMOS ESTO EN VEZ DE UTILIZAR LOS GETTERS DE LA CLASE JUGADOR PORQUE LOS INTEGERS (EDAD) NO TIENEN LONGITUD
 				//ADEMAS DE PORQUE ASIGNAMOS NOMBRES GENERICOS EN CASO DE EQUIVOCACION AL ESCRIBIR
+		
+					try {
 				
 				String lNom = txtNombre.getText();
 				String lApe = txtApellidos.getText();
@@ -115,7 +117,10 @@ public class Login extends JFrame {
 				jueg.setVisible(true);
 				jueg.setJ1(j1);
 				}
+			} catch (Exception asd){
+				System.out.println("Error: " +asd);
 			}
+		}
 		});
 		btnCrear.setBounds(152, 159, 141, 23);
 		contentPane.add(btnCrear);
