@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Registro extends JFrame {
@@ -142,6 +143,24 @@ public class Registro extends JFrame {
 				}
 			} catch (Exception asd){
 				System.out.println("Error: " +asd);
+			}finally{
+				//CERRAMOS LA CONEXION A LA BBDD
+				try {
+					if(ConexionDDBB.conexion!=null){
+						ConexionDDBB.conexion.close();
+						System.out.println("Desconectado de la bbdd");
+					}
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+				//EN CASO DE QUE FALLE LA DESCONEXION SE VUELVE A INTENTAR 1 VEZ MAS
+				try{
+					if(ConexionDDBB.conexion!=null){
+						ConexionDDBB.conexion.close();
+						}
+					} catch (SQLException a) {
+					System.out.println(a);
+			}
 			}
 		}
 		});	

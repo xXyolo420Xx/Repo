@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -27,6 +28,8 @@ public class Login extends JFrame {
 	private Login l;
 	private VentanaPostLogin v2;
 	private Jugador j1;
+	private ConexionDDBB con;
+	
 	public Login(VentanaPostLogin v2) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 439, 229);
@@ -67,6 +70,24 @@ public class Login extends JFrame {
 				//HACEMOS EL SET DE J1 Y HACCEMOS VISIBLE LA VENTANA DE JUEGO
 				v2.setJ1((Jugador)comboBox.getSelectedItem());
 				v2.setVisible(true);
+				
+				//CERRAMOS LA CONEXIÓN A LA BBDD
+				try {
+					if(ConexionDDBB.conexion!=null){
+						ConexionDDBB.conexion.close();
+						System.out.println("Desconectado de la bbdd");
+					}
+				} catch (SQLException z) {
+					System.out.println(z);
+				}
+				//EN CASO DE QUE FALLE LA DESCONEXION SE VUELVE A INTENTAR 1 VEZ MAS
+				try{
+					if(ConexionDDBB.conexion!=null){
+						ConexionDDBB.conexion.close();
+						}
+					} catch (SQLException a) {
+					System.out.println(a);
+			}
 			}
 		});
 		GridBagConstraints gbc_btnJugar = new GridBagConstraints();
@@ -97,7 +118,7 @@ public class Login extends JFrame {
 		contentPane.add(btnReg, gbc_btnReg);
 		
 		//NOS CONECTAMOS A LA BBDD PARA RECOGER A LOS USUARIOS YA REGISTRADOS
-		ConexionDDBB con = new ConexionDDBB("localhost","java","root","1234");
+		con = new ConexionDDBB("localhost","java","root","1234");
 		ConexionDDBB.getUsuarios(comboBox);
 	}
 
