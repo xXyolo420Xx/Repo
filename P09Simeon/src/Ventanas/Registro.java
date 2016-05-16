@@ -134,7 +134,7 @@ public class Registro extends JFrame {
 				}
 			
 				//AGREGAMOS EL NUEVO JUGADOR A LA BBDD
-				ConexionDDBB.insertar(j1.getNombre(), j1.get1Apellido(), j1.get2Apellido(), j1.getEdad());
+				ConexionDDBB.insertar(j1.getNombre(), j1.getApellido1(), j1.getApellido2(), j1.getEdad());
 										
 				//UNA VEZ HECHAS LAS REFERENCIAS CERRAMOS Login Y ABRIMOS LA VENTANA Juego
 				v1.dispose();

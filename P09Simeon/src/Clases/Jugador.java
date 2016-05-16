@@ -3,15 +3,14 @@ package Clases;
 public class Jugador {
 	
 	private String nombre;
-	private String txt1Apellido;
-	private String txt2Apellido;
+	private String Apellido1;
+	private String Apellido2;
 	private int edad, id;
 
 	public Jugador() {
 
 	}
 
-	
 	//GETTERS
 	public int getId() {
 		return id;
@@ -21,11 +20,11 @@ public class Jugador {
 		return nombre;
 	}
 
-	public String get1Apellido() {
-		return txt1Apellido;
+	public String getApellido1() {
+		return Apellido1;
 	}
-	public String get2Apellido() {
-		return txt2Apellido;
+	public String getApellido2() {
+		return Apellido2;
 	}
 
 	public int getEdad() {
@@ -50,18 +49,18 @@ public class Jugador {
 	public void set1Apellido(String txt1Apellido) {
 		if (txt1Apellido.length()<2){
 			System.out.println("Apellidos invalidos, asignando apellido genérico");
-			this.txt1Apellido="Garcia";
+			this.Apellido1="Garcia";
 		}else{
-		this.txt1Apellido = txt1Apellido;
+		this.Apellido1 = txt1Apellido;
 		}
 	}
 
 	public void set2Apellido(String txt2Apellido) {
 		if (txt2Apellido.length()<2){
 			System.out.println("Apellidos invalidos, asignando apellido genérico");
-			this.txt1Apellido="Gómez";
+			this.Apellido2="Gómez";
 		}else{
-		this.txt2Apellido = txt2Apellido;
+		this.Apellido2 = txt2Apellido;
 		}
 	}
 	
@@ -75,6 +74,6 @@ public class Jugador {
 	}
 	
 	public String toString(){
-		return this.id+"-"+this.nombre+" "+this.txt1Apellido;
+		return this.id+"-"+this.nombre+" "+this.Apellido2;
 	}
 }

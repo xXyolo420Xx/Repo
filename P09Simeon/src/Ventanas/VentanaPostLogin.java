@@ -71,8 +71,8 @@ public class VentanaPostLogin extends JFrame {
 	this.j1 = j1;
 	jueg.lblBienvenida.setText("Bienvenido "+j1.getNombre());
 	perf.txtNombre.setText(j1.getNombre());
-	perf.txt1Apellido.setText(j1.get1Apellido());
-	perf.txt2Apellido.setText(j1.get2Apellido());
+	perf.txt1Apellido.setText(j1.getApellido1());
+	perf.txt2Apellido.setText(j1.getApellido2());
 	perf.txtEdad.setText(String.valueOf(j1.getEdad()));
 	}	
 }
