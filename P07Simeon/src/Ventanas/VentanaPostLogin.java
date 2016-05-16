@@ -38,33 +38,30 @@ public class VentanaPostLogin extends JFrame {
 		setBounds(100, 100, 997, 578);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 	
 		contentPane.add(jueg,JUEGO);
 		contentPane.add(perf,PERFIL);
 		
+		//MENU
 		setJMenuBar(menuBar);
-		
 		menuBar.add(mnVentanas);
+		
+		mnVentanas.add(mntmJuego);
 		mntmJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			    CardLayout cl = (CardLayout)(contentPane.getLayout());
 			    cl.show(contentPane, JUEGO);
 			}
 		});
-		
-		mnVentanas.add(mntmJuego);
+		mnVentanas.add(mntmPerfil);
 		mntmPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			    CardLayout cl = (CardLayout)(contentPane.getLayout());
 			    cl.show(contentPane, PERFIL);
 			}
-		});
-		
-		mnVentanas.add(mntmPerfil);
-		
+		});		
 	}
 	//SETTER DE j1
 	public void setJ1(Jugador j1) {
