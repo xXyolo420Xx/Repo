@@ -3,8 +3,8 @@ package Clases;
 public class Jugador {
 	
 	private String nombre;
-	private String Apellido1;
-	private String Apellido2;
+	private String apellido1;
+	private String apellido2;
 	private int edad, id, puntos;
 
 	public Jugador() {
@@ -21,10 +21,10 @@ public class Jugador {
 	}
 
 	public String getApellido1() {
-		return Apellido1;
+		return apellido1;
 	}
 	public String getApellido2() {
-		return Apellido2;
+		return apellido2;
 	}
 
 	public int getEdad() {
@@ -48,18 +48,18 @@ public class Jugador {
 	public void setApellido1(String Apellido1) {
 		if (Apellido1.length()<2){
 			System.out.println("Apellidos invalidos, asignando apellido genérico");
-			this.Apellido1="Garcia";
+			this.apellido1="Garcia";
 		}else{
-		this.Apellido1 = Apellido1;
+		this.apellido1 = Apellido1;
 		}
 	}
 
 	public void setApellido2(String Apellido2) {
 		if (Apellido2.length()<2){
 			System.out.println("Apellidos invalidos, asignando apellido genérico");
-			this.Apellido2="Gómez";
+			this.apellido2="Gómez";
 		}else{
-		this.Apellido2 = Apellido2;
+		this.apellido2 = Apellido2;
 		}
 	}
 	
@@ -73,6 +73,6 @@ public class Jugador {
 	}
 	
 	public String toString(){
-		return this.id+"-"+this.nombre+" "+this.Apellido2;
+		return this.id+"-"+this.nombre+" "+this.apellido2;
 	}
 }
