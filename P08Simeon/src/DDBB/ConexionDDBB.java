@@ -13,8 +13,6 @@ public class ConexionDDBB {
 		//DRIVER
 		static final String sqlDriver = "com.mysql.jdbc.Driver";
 		
-		private Registro r;
-		
 		private String host, bbdd, user, pass, url;
 		public static Connection conexion;
 
