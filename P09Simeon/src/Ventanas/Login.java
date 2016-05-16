@@ -65,12 +65,15 @@ public class Login extends JFrame {
 		JButton btnJugar = new JButton("Jugar");
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
 				//CERRAMOS LA VENTANA LOGIN
 				l.dispose();
 				//HACEMOS EL SET DE J1 Y HACCEMOS VISIBLE LA VENTANA DE JUEGO
 				v2.setJ1((Jugador)comboBox.getSelectedItem());
 				v2.setVisible(true);
-				
+				}catch (Exception bloas){
+					System.out.println(bloas);
+				}
 				//CERRAMOS LA CONEXIÓN A LA BBDD
 				try {
 					if(ConexionDDBB.conexion!=null){
@@ -118,8 +121,12 @@ public class Login extends JFrame {
 		contentPane.add(btnReg, gbc_btnReg);
 		
 		//NOS CONECTAMOS A LA BBDD PARA RECOGER A LOS USUARIOS YA REGISTRADOS
+		try{
 		con = new ConexionDDBB("localhost","java","root","1234");
 		ConexionDDBB.getUsuarios(comboBox);
+		}catch (Exception bsd){
+			System.out.println(bsd);
+		}
 	}
 
 }

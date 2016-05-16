@@ -127,12 +127,6 @@ public class Registro extends JFrame {
 				int intEdad = Integer.valueOf(sEdad);
 				j1.setEdad(intEdad);
 				
-				//CONEXION A LA BBDD
-				con = new ConexionDDBB("localhost", "java", "root", "1234");
-				if (ConexionDDBB.conexion == null){
-					txtRes.setText("Error en la conexion a la BBDD");
-				}
-			
 				//AGREGAMOS EL NUEVO JUGADOR A LA BBDD
 				ConexionDDBB.insertar(j1.getNombre(), j1.getApellido1(), j1.getApellido2(), j1.getEdad());
 										
