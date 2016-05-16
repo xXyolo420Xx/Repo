@@ -5,7 +5,7 @@ public class Jugador {
 	private String nombre;
 	private String Apellido1;
 	private String Apellido2;
-	private int edad, id;
+	private int edad, id, puntos;
 
 	public Jugador() {
 
@@ -30,7 +30,6 @@ public class Jugador {
 	public int getEdad() {
 		return edad;
 	}
-
 	
 	//SETTERS	
 	public void setId(int id) {
@@ -46,21 +45,21 @@ public class Jugador {
 		}
 	}
 
-	public void set1Apellido(String txt1Apellido) {
-		if (txt1Apellido.length()<2){
+	public void setApellido1(String Apellido1) {
+		if (Apellido1.length()<2){
 			System.out.println("Apellidos invalidos, asignando apellido genérico");
 			this.Apellido1="Garcia";
 		}else{
-		this.Apellido1 = txt1Apellido;
+		this.Apellido1 = Apellido1;
 		}
 	}
 
-	public void set2Apellido(String txt2Apellido) {
-		if (txt2Apellido.length()<2){
+	public void setApellido2(String Apellido2) {
+		if (Apellido2.length()<2){
 			System.out.println("Apellidos invalidos, asignando apellido genérico");
 			this.Apellido2="Gómez";
 		}else{
-		this.Apellido2 = txt2Apellido;
+		this.Apellido2 = Apellido2;
 		}
 	}
 	

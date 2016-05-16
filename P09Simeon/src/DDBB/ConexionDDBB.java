@@ -67,8 +67,8 @@ public class ConexionDDBB {
 				Jugador j1 = new Jugador();
 				j1.setId(c.getInt("ID"));
 				j1.setNombre(c.getString("Nombre"));
-				j1.set1Apellido(c.getString("Apellido1"));
-				j1.set2Apellido(c.getString("Apellido2"));
+				j1.setApellido1(c.getString("Apellido1"));
+				j1.setApellido2(c.getString("Apellido2"));
 				j1.setEdad(c.getInt("Edad"));
 				jc.addItem(j1);
 				}

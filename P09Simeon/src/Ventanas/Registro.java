@@ -120,8 +120,8 @@ public class Registro extends JFrame {
 								
 				//DEFINIMOS SUS CARACTERISTICAS
 				j1.setNombre(txtNombre.getText());
-				j1.set1Apellido(txt1Apellido.getText());
-				j1.set2Apellido(txt2Apellido.getText());
+				j1.setApellido1(txt1Apellido.getText());
+				j1.setApellido2(txt2Apellido.getText());
 				//PASAMOS EDAD A INTEGER
 				String sEdad= txtEdad.getText();
 				int intEdad = Integer.valueOf(sEdad);
