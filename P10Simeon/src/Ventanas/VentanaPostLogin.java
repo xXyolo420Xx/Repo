@@ -70,6 +70,7 @@ public class VentanaPostLogin extends JFrame {
 	public void setJ1(Jugador j1) {
 	this.j1 = j1;
 	jueg.lblBienvenida.setText("Bienvenido "+j1.getNombre());
+	jueg.lblPuntos.setText("Tienes "+String.valueOf(j1.getPuntos())+" puntos.");
 	perf.txtNombre.setText(j1.getNombre());
 	perf.txt1Apellido.setText(j1.getApellido1());
 	perf.txt2Apellido.setText(j1.getApellido2());
@@ -77,6 +78,5 @@ public class VentanaPostLogin extends JFrame {
 	perf.txtPuntos.setText(String.valueOf(j1.getPuntos()));
 	perf.setJ1(j1);
 	jueg.setJ1(j1);
-	}	
-
+	}
 }

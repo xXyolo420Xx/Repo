@@ -30,7 +30,8 @@ import java.awt.event.ActionEvent;
 public class Juego extends JPanel {
 	
 	private JPanel contentPane;
-	JLabel lblBienvenida;
+	JLabel lblBienvenida, lblPuntos;
+	Perfil perf;
 	//REFERENCIA DE j1;
 	//DEFINIMOS ETIQUETAS DE LOS DADOS
 	private JLabel a1,a2,a3,r1,r2,m1, lblRes;
@@ -50,7 +51,6 @@ public class Juego extends JPanel {
 	private int res;
 	//BOOLEANS COMPROBACIONES
 	private boolean num, esMas;
-	private Perfil perf;
 	private Jugador j1;
 
 	public Juego() {
@@ -61,6 +61,10 @@ public class Juego extends JPanel {
 		lblBienvenida.setBounds(664, 11, 312, 14);
 		add(lblBienvenida);
 		
+		//LABEL PUNTOS
+		lblPuntos = new JLabel("");
+		lblPuntos.setBounds(587, 69, 347, 14);
+		add(lblPuntos);
 	
 		//ETIQUETAS DE LOS DADOS 
 		a1 = new JLabel("New label");
@@ -99,7 +103,7 @@ public class Juego extends JPanel {
 			}
 		);
 		btnMas.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnMas.setBounds(587, 51, 136, 37);
+		btnMas.setBounds(587, 118, 136, 37);
 		add(btnMas);
 		
 		JButton btnMenos = new JButton("-");
@@ -114,12 +118,12 @@ public class Juego extends JPanel {
 			}
 		);
 		btnMenos.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnMenos.setBounds(797, 51, 137, 37);
+		btnMenos.setBounds(797, 118, 137, 37);
 		add(btnMenos);
 		
 		txtOp = new JTextField();
 		txtOp.setEditable(false);
-		txtOp.setBounds(587, 99, 346, 70);
+		txtOp.setBounds(587, 166, 346, 70);
 		add(txtOp);
 		txtOp.setColumns(10);	
 		
@@ -134,11 +138,12 @@ public class Juego extends JPanel {
 					try {
 						ConexionDDBB.getConexion().createStatement().executeUpdate("UPDATE usuarios SET Puntos = "+(j1.getPuntos()+5)+" WHERE ID = "+j1.getId());
 						j1.setPuntos(j1.getPuntos()+5);
+						lblPuntos.setText("Tienes "+String.valueOf(j1.getPuntos())+" puntos.");
+						btnMath.setEnabled(false);
+						Perfil.addPts(j1.getPuntos());
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
 				}else{
 					lblRes.setText("Incorrecto, tu resultado es: "+res);
 				}
@@ -146,12 +151,12 @@ public class Juego extends JPanel {
 			}
 		);
 		btnMath.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnMath.setBounds(587, 180, 347, 37);
+		btnMath.setBounds(587, 247, 347, 37);
 		add(btnMath);
 		
 		lblRes = new JLabel("");
 		lblRes.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblRes.setBounds(587, 235, 346, 130);
+		lblRes.setBounds(587, 295, 346, 70);
 		add(lblRes);
 		
 		//BOTON DE REINICIAR
@@ -159,13 +164,15 @@ public class Juego extends JPanel {
 		btnRestart.setEnabled(false);
 		btnRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
-				reset();	
+				reset();
+				btnMath.setEnabled(true);
 				}		
 			}
 		);
 		btnRestart.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnRestart.setBounds(587, 376, 347, 37);
 		add(btnRestart);
+		
 		
 		reset();
 		
@@ -278,5 +285,4 @@ public class Juego extends JPanel {
 		public void setJ1(Jugador j1) {
 		this.j1 = j1;
 		}
-		
 	}

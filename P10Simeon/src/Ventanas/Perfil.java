@@ -15,7 +15,8 @@ import java.awt.event.ActionEvent;
 
 public class Perfil extends JPanel {
 	
-	JTextField txtNombre, txt2Apellido, txt1Apellido, txtEdad, txtPuntos;
+	JTextField txtNombre, txt2Apellido, txt1Apellido, txtEdad;
+	static JTextField txtPuntos;
 	Jugador j1;
 	public Perfil() {
 		setLayout(null);
@@ -97,4 +98,10 @@ public class Perfil extends JPanel {
 	public void setJ1(Jugador j1) {
 	this.j1 = j1;
 	}
+	
+	//METODO PARA ACTUALIZAR PUNTOS EN PANTALLA DE PERFIL
+	public static void addPts(int lol){
+		txtPuntos.setText(String.valueOf(lol));
+	}
+
 }
