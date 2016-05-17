@@ -26,10 +26,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JComboBox comboBox;
 	private Login l;
-	private VentanaPostLogin v2;
-	private Juego jueg;
-	private Jugador j1;
-	private ConexionDDBB con;
+
 	
 	public Login(VentanaPostLogin v2) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,11 +63,15 @@ public class Login extends JFrame {
 		JButton btnJugar = new JButton("Jugar");
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
 				//CERRAMOS LA VENTANA LOGIN
 				l.dispose();
 				//HACEMOS EL SET DE J1 Y HACCEMOS VISIBLE LA VENTANA DE JUEGO
 				v2.setJ1((Jugador)comboBox.getSelectedItem());
 				v2.setVisible(true);
+				}catch (Exception blow){
+					System.out.println(blow);
+				}
 			}
 		});
 		GridBagConstraints gbc_btnJugar = new GridBagConstraints();
@@ -86,11 +87,15 @@ public class Login extends JFrame {
 		JButton btnReg = new JButton("Registrar nuevo usuario");
 		btnReg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try{
 				//CERRAMOS LA VENTANA DE LOGIN Y ABRIMOS LA DE REGISTRO
 				l.dispose();
 				Registro r = new Registro(v2);
 				r.setVisible(true);
-			}
+				}catch (Exception blaw){
+					System.out.println(blaw);
+				}
+				}
 		});
 		GridBagConstraints gbc_btnReg = new GridBagConstraints();
 		gbc_btnReg.anchor = GridBagConstraints.SOUTH;

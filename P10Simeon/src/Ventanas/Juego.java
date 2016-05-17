@@ -29,7 +29,7 @@ import java.awt.event.ActionEvent;
 
 public class Juego extends JPanel {
 	
-	private JPanel contentPane;
+
 	JLabel lblBienvenida, lblPuntos;
 	Perfil perf;
 	//REFERENCIA DE j1;

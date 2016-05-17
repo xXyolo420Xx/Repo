@@ -14,14 +14,9 @@ public class ConexionDDBB {
 		//DRIVER
 		static final String sqlDriver = "com.mysql.jdbc.Driver";
 		
-		private Registro r;
-		
-		private String host, bbdd, user, pass, url;
-
-		private static Jugador j1;
 		private static Connection conexion;
 		private static ConexionDDBB con;
-		private VentanaPostLogin v2;
+
 		public ConexionDDBB(){	
 			try {
 				//CARGA DRIVER
@@ -52,7 +47,7 @@ public class ConexionDDBB {
 		public static Jugador insertar(String nombre, String apellido1, String apellido2, int edad){
 			
 			try {
-				conexion.createStatement().executeUpdate("INSERT INTO usuarios (Nombre, Apellido1, Apellido2, Edad, Puntos) VALUES ('"+nombre+"', '"+apellido1+"', '"+apellido2+"', "+edad+", 0)");
+				getConexion().createStatement().executeUpdate("INSERT INTO usuarios (Nombre, Apellido1, Apellido2, Edad, Puntos) VALUES ('"+nombre+"', '"+apellido1+"', '"+apellido2+"', "+edad+", 0)");
 				System.out.println("Usuario registrado con éxito");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -90,29 +85,7 @@ public class ConexionDDBB {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}			
-		}
-		
-		//METODO DESCONEXION DE LA BBDD
-		public static void desconectar(){
-		try {
-	
-			if(ConexionDDBB.conexion!=null){
-				ConexionDDBB.conexion.close();
-				System.out.println("Desconectado de la bbdd");
-			}
-		} catch (SQLException z) {
-			System.out.println(z);
-		}
-		//EN CASO DE QUE FALLE LA DESCONEXION SE VUELVE A INTENTAR 1 VEZ MAS
-		try{
-			if(ConexionDDBB.conexion!=null){
-				ConexionDDBB.conexion.close();
-				}
-			} catch (SQLException a) {
-			System.out.println(a);
-			}
-		
-		}
-}
+		}		
+	}
 
 
