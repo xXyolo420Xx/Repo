@@ -74,23 +74,7 @@ public class Login extends JFrame {
 				}catch (Exception bloas){
 					System.out.println(bloas);
 				}
-				//CERRAMOS LA CONEXIÓN A LA BBDD
-				try {
-					if(ConexionDDBB.conexion!=null){
-						ConexionDDBB.conexion.close();
-						System.out.println("Desconectado de la bbdd");
-					}
-				} catch (SQLException z) {
-					System.out.println(z);
-				}
-				//EN CASO DE QUE FALLE LA DESCONEXION SE VUELVE A INTENTAR 1 VEZ MAS
-				try{
-					if(ConexionDDBB.conexion!=null){
-						ConexionDDBB.conexion.close();
-						}
-					} catch (SQLException a) {
-					System.out.println(a);
-			}
+				ConexionDDBB.desconectar();
 			}
 		});
 		GridBagConstraints gbc_btnJugar = new GridBagConstraints();
