@@ -96,7 +96,8 @@ public class ConexionDDBB {
 			}	
 			
 		}
-		//CERRAMOS LA CONEXIÓN A LA BBDD
+		
+		//METODO DESCONEXION DE LA BBDD
 	public static void desconectar(){
 		try {
 	
