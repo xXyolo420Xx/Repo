@@ -18,6 +18,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class VentanaPostLogin extends JFrame {
 	
@@ -25,7 +29,7 @@ public class VentanaPostLogin extends JFrame {
 
 	Juego jueg = new Juego();
 	Perfil perf = new Perfil();
-	Jugador j1;	
+	Jugador j1;
 	final static String JUEGO = "Juego";
 	final static String PERFIL = "Perfil";
 	private final JMenuBar menuBar = new JMenuBar();
@@ -62,7 +66,7 @@ public class VentanaPostLogin extends JFrame {
 			    cl.show(contentPane, PERFIL);
 			}
 		});
-		
+	
 		mnVentanas.add(mntmPerfil);
 		
 	}
@@ -75,7 +79,7 @@ public class VentanaPostLogin extends JFrame {
 	perf.txt1Apellido.setText(j1.getApellido1());
 	perf.txt2Apellido.setText(j1.getApellido2());
 	perf.txtEdad.setText(String.valueOf(j1.getEdad()));
-	perf.txtPuntos.setText(String.valueOf(j1.getPuntos()));
+	Perfil.txtPuntos.setText(String.valueOf(j1.getPuntos()));
 	perf.setJ1(j1);
 	jueg.setJ1(j1);
 	}
