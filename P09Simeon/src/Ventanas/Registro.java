@@ -90,7 +90,7 @@ public class Registro extends JFrame {
 		contentPane.add(txtRes);
 		txtRes.setColumns(10);
 		
-		//HACEMOS REFERENCIA A LA VENTANA DE LOGIN CON V1
+		//HACEMOS REFERENCIA A LA VENTANA DE REGISTRO CON V1
 		v1=this;
 		
 		//BOTON

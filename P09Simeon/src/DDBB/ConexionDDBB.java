@@ -57,24 +57,10 @@ public class ConexionDDBB {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				System.out.println("Error en el registro");
+			}finally{
+				desconectar();
 			}
-			//CERRAMOS LA CONEXIÓN A LA BBDD
-			try {
-				if(ConexionDDBB.conexion!=null){
-					ConexionDDBB.conexion.close();
-					System.out.println("Desconectado de la bbdd");
-				}
-			} catch (SQLException z) {
-				System.out.println(z);
-			}
-			//EN CASO DE QUE FALLE LA DESCONEXION SE VUELVE A INTENTAR 1 VEZ MAS
-			try{
-				if(ConexionDDBB.conexion!=null){
-					ConexionDDBB.conexion.close();
-					}
-				} catch (SQLException a) {
-				System.out.println(a);
-		}
+			
 		}
 		
 			//METODO PARA COGER LOS USUARIOS DE LA BBDD
@@ -100,7 +86,6 @@ public class ConexionDDBB {
 		//METODO DESCONEXION DE LA BBDD
 	public static void desconectar(){
 		try {
-	
 			if(ConexionDDBB.conexion!=null){
 				ConexionDDBB.conexion.close();
 				System.out.println("Desconectado de la bbdd");
