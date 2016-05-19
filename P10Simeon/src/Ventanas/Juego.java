@@ -35,7 +35,7 @@ public class Juego extends JPanel {
 	//REFERENCIA DE j1;
 	//DEFINIMOS ETIQUETAS DE LOS DADOS
 	private JLabel a1,a2,a3,r1,r2,m1, lblRes;
-	
+	private JButton btnMath;
 	//DEFINIMOS LOS RANDOMS DE LOS DADOS
 	private int rnda1, rnda2, rnda3, rndr1, rndr2, rndm1;
 	//ARRAYS DE LOS DADOS
@@ -128,7 +128,7 @@ public class Juego extends JPanel {
 		txtOp.setColumns(10);	
 		
 		//BOTON DE MATHDICE
-		JButton btnMath = new JButton("MATHDICE");
+		btnMath = new JButton("MATHDICE");
 		btnMath.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnRestart.setEnabled(true);
@@ -165,7 +165,6 @@ public class Juego extends JPanel {
 		btnRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 				reset();
-				btnMath.setEnabled(true);
 				}		
 			}
 		);
@@ -232,6 +231,7 @@ public class Juego extends JPanel {
 			txtOp.setText("");
 			lblRes.setText("");		
 			btnRestart.setEnabled(false);
+			btnMath.setEnabled(true);
 }
 		//CREAMOS LA INNERCLASS ESCUCHA
 		private class escucha implements MouseListener {

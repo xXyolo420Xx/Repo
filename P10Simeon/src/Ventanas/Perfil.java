@@ -203,7 +203,7 @@ public class Perfil extends JPanel {
 							"', Apellido1 = '"+txt1Apellido.getText()+
 							"', Apellido2 = '"+txt2Apellido.getText()+
 							"', Edad = "+txtEdad.getText()+
-							" WHERE ID = "+j1.getId());
+							" WHERE ID = "+Integer.valueOf(j1.getId()));
 					txtRes.setText("Perfil Actualizado con éxito");
 				} catch (SQLException e) {
 					txtRes.setText("Error");
