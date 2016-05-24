@@ -26,7 +26,6 @@ import javax.swing.Box;
 public class VentanaPostLogin extends JFrame {
 	
 	private JPanel contentPane;
-
 	Juego jueg = new Juego();
 	Perfil perf = new Perfil();
 	Jugador j1;

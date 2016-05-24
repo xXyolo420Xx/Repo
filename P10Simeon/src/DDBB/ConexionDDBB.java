@@ -22,7 +22,7 @@ public class ConexionDDBB {
 				//CARGA DRIVER
 				Class.forName(sqlDriver);
 				//CONECTARNOS A LA BBDD
-				conexion = DriverManager.getConnection("jdbc:mysql://localhost/java","root","1234");
+				conexion = DriverManager.getConnection("jdbc:mysql://mathdice.cowjglbmfhcm.eu-west-1.rds.amazonaws.com:3306/java","admin","dd90480h60");
 				System.out.println("Conectado con éxito");
 			}
 			catch( SQLException excepcionSql ) 
@@ -86,6 +86,26 @@ public class ConexionDDBB {
 				e.printStackTrace();
 			}			
 		}		
+		
+		public static void masPts(int puntos, int id) {
+			try {
+				getConexion().createStatement().executeUpdate("UPDATE usuarios SET Puntos = "+(puntos+5)+" WHERE ID = "+id);
+			} catch (SQLException e) {
+				System.out.println(e);;
+			}
+		}
+		
+		public static void actPerfil(String nombre, String apellido1, String apellido2, int edad, int id){
+			try {
+				getConexion().createStatement().executeUpdate("UPDATE usuarios SET Nombre = '"+nombre+
+						"', Apellido1 = '"+apellido1+
+						"', Apellido2 = '"+apellido2+
+						"', Edad = "+edad+
+						" WHERE ID = "+id);
+			} catch (SQLException e) {
+				System.out.println(e);
+			}
+		}
 	}
 
 

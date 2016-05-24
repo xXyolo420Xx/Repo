@@ -23,7 +23,7 @@ public class Perfil extends JPanel {
 	
 	JTextField txtNombre, txt2Apellido, txt1Apellido, txtEdad;
 	static JTextField txtPuntos;
-	Jugador j1;
+	private Jugador j1;
 	private JTextField txtRes;
 	public Perfil() {
 		
@@ -198,17 +198,8 @@ public class Perfil extends JPanel {
 		JButton btnAct = new JButton("Actualizar datos");
 		btnAct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					ConexionDDBB.getConexion().createStatement().executeUpdate("UPDATE usuarios SET Nombre = '"+txtNombre.getText()+
-							"', Apellido1 = '"+txt1Apellido.getText()+
-							"', Apellido2 = '"+txt2Apellido.getText()+
-							"', Edad = "+txtEdad.getText()+
-							" WHERE ID = "+Integer.valueOf(j1.getId()));
-					txtRes.setText("Perfil Actualizado con éxito");
-				} catch (SQLException e) {
-					txtRes.setText("Error");
-					e.printStackTrace();
-				}
+				ConexionDDBB.actPerfil(txt1Apellido.getText(), txt1Apellido.getText(), txt2Apellido.getText(), Integer.valueOf(txtEdad.getText()), Integer.valueOf(j1.getId()));
+				txtRes.setText("Perfil Actualizado con éxito");
 			}
 		});
 		

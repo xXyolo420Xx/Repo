@@ -135,15 +135,11 @@ public class Juego extends JPanel {
 				if (res == (rndm1+1)){
 					lblRes.setText("Correcto");
 					
-					try {
-						ConexionDDBB.getConexion().createStatement().executeUpdate("UPDATE usuarios SET Puntos = "+(j1.getPuntos()+5)+" WHERE ID = "+j1.getId());
-						j1.setPuntos(j1.getPuntos()+5);
-						lblPuntos.setText("Tienes "+String.valueOf(j1.getPuntos())+" puntos.");
-						btnMath.setEnabled(false);
-						Perfil.addPts(j1.getPuntos());
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-					}
+					ConexionDDBB.masPts(j1.getPuntos(), j1.getId());
+					j1.setPuntos(j1.getPuntos()+5);
+					lblPuntos.setText("Tienes "+String.valueOf(j1.getPuntos())+" puntos.");
+					btnMath.setEnabled(false);
+					Perfil.addPts(j1.getPuntos());
 				}else{
 					lblRes.setText("Incorrecto, tu resultado es: "+res);
 				}

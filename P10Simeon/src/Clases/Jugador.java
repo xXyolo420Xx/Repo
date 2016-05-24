@@ -81,6 +81,6 @@ public class Jugador {
 	}
 	
 	public String toString(){
-		return this.id+"-"+this.nombre+" "+this.apellido2;
+		return this.id+"-"+this.nombre+" "+this.apellido1;
 	}
 }
