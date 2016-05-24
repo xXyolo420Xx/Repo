@@ -25,7 +25,7 @@ public class Perfil extends JPanel {
 	static JTextField txtPuntos;
 	private Jugador j1;
 	private JTextField txtRes;
-	public Perfil() {
+	public Perfil(Juego jueg) {
 		
 		ImageIcon avatar = new ImageIcon(getClass().getResource("/Ventanas/Azul/worm.jpg"));
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -198,8 +198,9 @@ public class Perfil extends JPanel {
 		JButton btnAct = new JButton("Actualizar datos");
 		btnAct.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConexionDDBB.actPerfil(txt1Apellido.getText(), txt1Apellido.getText(), txt2Apellido.getText(), Integer.valueOf(txtEdad.getText()), Integer.valueOf(j1.getId()));
+				ConexionDDBB.actPerfil(txtNombre.getText(), txt1Apellido.getText(), txt2Apellido.getText(), Integer.valueOf(txtEdad.getText()), j1.getId());
 				txtRes.setText("Perfil Actualizado con éxito");
+				jueg.lblBienvenida.setText("Bienvenido "+txtNombre.getText());
 			}
 		});
 		

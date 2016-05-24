@@ -27,7 +27,7 @@ public class VentanaPostLogin extends JFrame {
 	
 	private JPanel contentPane;
 	Juego jueg = new Juego();
-	Perfil perf = new Perfil();
+	Perfil perf = new Perfil(jueg);
 	Jugador j1;
 	final static String JUEGO = "Juego";
 	final static String PERFIL = "Perfil";
