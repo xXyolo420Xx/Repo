@@ -208,6 +208,9 @@ public class Perfil extends JPanel {
 				j1.setId(j1.getId());
 				txtRes.setText("Perfil Actualizado con éxito");
 				jueg.lblBienvenida.setText("Bienvenido "+txtNombre.getText());
+				int ind = camb.comboBox.getSelectedIndex();
+				camb.comboBox.removeItemAt(ind);
+				camb.comboBox.insertItemAt(j1, ind);
 				camb.setJ1(j1);
 			}
 		});
