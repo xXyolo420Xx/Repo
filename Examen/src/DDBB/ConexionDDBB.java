@@ -81,6 +81,7 @@ public class ConexionDDBB {
 				j1.setEdad(c.getInt("Edad"));
 				j1.setPuntos(c.getInt("Puntos"));
 				jc.addItem(j1);
+				
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
