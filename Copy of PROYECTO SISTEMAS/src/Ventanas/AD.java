@@ -67,6 +67,9 @@ public class AD extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println(String.valueOf(txtPass.getPassword()));
 				ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon);
+				
+				l.dispose();
+				v2.setVisible(true);
 			}
 		});
 		GridBagConstraints gbc_btnJugar = new GridBagConstraints();

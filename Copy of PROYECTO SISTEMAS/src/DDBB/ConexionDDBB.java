@@ -116,13 +116,12 @@ public class ConexionDDBB {
 		
 		public static void conActiv(String user, String pass, JTextField text){
 			
-//lol
 			Hashtable<String, String> env = new Hashtable<String, String>();
 			env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 			env.put(Context.SECURITY_AUTHENTICATION, "simple");
 			env.put(Context.PROVIDER_URL, "ldap://10.2.72.188");
-			env.put(Context.SECURITY_PRINCIPAL, "Manolo@sistemas2012.local");
-			env.put(Context.SECURITY_CREDENTIALS, "PCUch60");
+			env.put(Context.SECURITY_PRINCIPAL, user+"@sistemas2012.local");
+			env.put(Context.SECURITY_CREDENTIALS, pass);
 
 			DirContext ctx;
 
@@ -132,8 +131,8 @@ public class ConexionDDBB {
 				ctx.close();
 
 			} catch (NamingException ex) {
-				System.out.println("Ha habido un error en la autenticación");
-				text.setText("Ha habido un error en la autenticación");
+				System.out.println("Ha habido un error en la autentificación");
+				text.setText("Ha habido un error en la autentificación");
 			}
 		}			
 	}
