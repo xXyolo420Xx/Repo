@@ -67,7 +67,7 @@ public class AD extends JPanel {
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-		
+		if (txtUser.getText().length()>1 && txtPass.getPassword().length>1){
 					try {
 						if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true && ConexionDDBB.checkUser(txtUser.getText()) == true){
 							v2.setJ1(ConexionDDBB.getJ1(txtUser.getText()));
@@ -85,6 +85,9 @@ public class AD extends JPanel {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
+				}else{
+					txtCon.setText("Rellena todos los campos");
+				}
 				}
 			});
 		GridBagConstraints gbc_btnJugar = new GridBagConstraints();

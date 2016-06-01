@@ -127,7 +127,7 @@ public class ConexionDDBB {
 
 			try {
 				ctx = new InitialDirContext(env);
-				System.out.println("El usuario se ha autenticado correctamente");			
+				System.out.println("El usuario se ha autentificado correctamente");			
 				ctx.close();
 				return true;
 
