@@ -114,7 +114,7 @@ public class ConexionDDBB {
 			}
 		}
 		
-		public static void conActiv(String user, String pass, JTextField text){
+		public static boolean conActiv(String user, String pass, JTextField text){
 			
 			Hashtable<String, String> env = new Hashtable<String, String>();
 			env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
@@ -129,10 +129,12 @@ public class ConexionDDBB {
 				ctx = new InitialDirContext(env);
 				System.out.println("El usuario se ha autenticado correctamente");			
 				ctx.close();
+				return true;
 
 			} catch (NamingException ex) {
 				System.out.println("Ha habido un error en la autentificación");
 				text.setText("Ha habido un error en la autentificación");
+				return false;
 			}
 		}
 		

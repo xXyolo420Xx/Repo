@@ -66,14 +66,14 @@ public class AD extends JPanel {
 		btnJugar = new JButton("Jugar");
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon);
+				
 		
 					try {
-						if (ConexionDDBB.checkUser(txtUser.getText()) == true){
+						if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true || ConexionDDBB.checkUser(txtUser.getText()) == true){
 							v2.setJ1(ConexionDDBB.getJ1(txtUser.getText()));
 							l.dispose();
 							v2.setVisible(true);
-						}else{
+						}else if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true || ConexionDDBB.checkUser(txtUser.getText()) == false){
 							Registro r = new Registro(v2);
 							r.txtNombre.setEditable(false);
 							r.txtNombre.setText(txtUser.getText());
