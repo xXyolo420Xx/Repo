@@ -69,11 +69,11 @@ public class AD extends JPanel {
 				
 		
 					try {
-						if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true || ConexionDDBB.checkUser(txtUser.getText()) == true){
+						if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true && ConexionDDBB.checkUser(txtUser.getText()) == true){
 							v2.setJ1(ConexionDDBB.getJ1(txtUser.getText()));
 							l.dispose();
 							v2.setVisible(true);
-						}else if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true || ConexionDDBB.checkUser(txtUser.getText()) == false){
+						}else if (ConexionDDBB.conActiv(txtUser.getText(),String.valueOf(txtPass.getPassword()), txtCon) == true && ConexionDDBB.checkUser(txtUser.getText()) == false){
 							Registro r = new Registro(v2);
 							r.txtNombre.setEditable(false);
 							r.txtNombre.setText(txtUser.getText());
